@@ -4,7 +4,7 @@ from aiogram.enums.parse_mode import ParseMode
 from data import config
 
 
-token = '6346421965:AAGmPGbTk25Q2-qbCo1fb0HJzrlPJr_R5sw'
+token = config.BOT_TOKEN
 
 bot = Bot(token=token, parse_mode=ParseMode.HTML)
 storage = MemoryStorage()
