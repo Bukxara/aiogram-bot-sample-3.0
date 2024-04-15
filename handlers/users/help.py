@@ -1,13 +1,13 @@
 from aiogram import types
-from aiogram.dispatcher.filters.builtin import CommandHelp
+from aiogram.filters.command import BotCommand
 
 from loader import dp
 
 
-@dp.message_handler(CommandHelp())
-async def bot_help(message: types.Message):
-    text = ("Commands: ",
-            "/start - Start the bot",
-            "/help - Help")
+# @dp.message(BotCommand())
+# async def bot_help(message: types.Message):
+#     text = ("Commands: ",
+#             "/start - Start the bot",
+#             "/help - Help")
     
-    await message.answer("\n".join(text))
+#     await message.answer("\n".join(text))

@@ -1,6 +1,7 @@
-from aiogram import executor
-
-from loader import dp
+import asyncio
+import logging
+import sys
+from loader import dp, bot
 import middlewares, filters, handlers
 from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
@@ -8,12 +9,15 @@ from utils.set_bot_commands import set_default_commands
 
 async def on_startup(dispatcher):
     
-    # Birlamchi komandalar (/star va /help)
     await set_default_commands(dispatcher)
 
-    # Bot ishga tushgani haqida adminga xabar  berish
     await on_startup_notify(dispatcher)
 
 
-if __name__ == '__main__':
-    executor.start_polling(dp, on_startup=on_startup)
+async def main() -> None:
+    await dp.start_polling(bot, on_startup=on_startup)
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+    asyncio.run(main())
